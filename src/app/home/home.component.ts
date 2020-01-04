@@ -1,24 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import { first } from 'rxjs/operators';
 
-// import { User } from '../_models';
-// import { UserService } from '../_services';
+import { Plant } from '../_models';
+import { PlantService } from '../_services';
 
 @Component({ templateUrl: 'home.component.html' })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   loading = false;
-  // users: User[];
-  constructor() { }
-  ngOnInit(): void {
-  }
+  plants: Plant[];
+  constructor(
+    private plantService: PlantService
+  ) { }
 
   // constructor(private userService: UserService) { }
   //
-  // ngOnInit() {
-  //   this.loading = true;
-  //   this.userService.getAll().pipe(first()).subscribe(users => {
-  //     this.loading = false;
-  //     this.users = users;
-  //   });
-  // }
+  ngOnInit() {
+    this.loading = true;
+    this.plantService.getAll().pipe(first()).subscribe(plants => {
+      this.loading = false;
+      this.plants = plants;
+      console.log(plants);
+    });
+  }
 }
