@@ -1,12 +1,29 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-</nav>
+<!--<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">-->
+<!--  <div class="navbar-nav">-->
+<!--    <a class="nav-item nav-link" routerLink="/">Home</a>-->
+<!--    <a class="nav-item nav-link" (click)="logout()">Logout</a>-->
+<!--  </div>-->
+<!--</nav>-->
 
+<!--<mat-toolbar>-->
+<!--  <span>My Application</span>-->
+<!--</mat-toolbar>-->
+<div *ngIf="this.currentUser; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+<app-main-nav>
 <!-- main app container -->
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+</app-main-nav>
+</ng-template>
+<ng-template #elseBlock>
+    <!-- main app container -->
+<!--    <div class="container">-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </div>-->
+  <div class="container-custom">
+  <app-login></app-login>
+  </div>
+</ng-template>

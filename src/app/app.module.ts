@@ -9,16 +9,36 @@ import { appRoutingModule } from './app.routing';
 
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
+import { ActionsComponent} from './actions';
+import { NewPlantComponent } from './new-plant';
+import { ViewMoreComponent } from './viewMore';
+import { ConfigurationComponent } from './configuration';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
+import { ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ActionsComponent,
+    MainNavComponent,
+    NewPlantComponent,
+    ViewMoreComponent,
+    ConfigurationComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +47,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    appRoutingModule
+    appRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatTableModule,
+    ChartsModule
   ],
   providers: [
   ],

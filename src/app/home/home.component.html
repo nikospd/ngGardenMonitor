@@ -1,10 +1,59 @@
-<div class="card mt-4">
-  <h4 class="card-header">You're logged in with Angular 8 & Basic HTTP Authentication!!</h4>
-  <div class="card-body">
-    <h6>Users from secure api end point</h6>
-<!--    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>-->
-<!--    <ul *ngIf="users">-->
-<!--      <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>-->
-<!--    </ul>-->
-<!--  </div>-->
-</div>
+<h4 class="title-custom">Plants per Category</h4>
+<mat-grid-list cols="4" rowHeight="1:1">
+  <mat-grid-tile>
+    <img [class.selected-type]="this.selectedType==='all'" src="../../assets/all-icon.png" (click)="onAll()" class="type-icon">
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <img [class.selected-type]="this.selectedType==='flowers'" src="../../assets/flowers-icon.png" (click)="onFlowers()" class="type-icon">
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <img [class.selected-type]="this.selectedType==='herbs'" src="../../assets/herbs-icon.png" (click)="onHerbs()" class="type-icon">
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <img [class.selected-type]="this.selectedType==='cactus'" src="../../assets/cactus-icon.png" (click)="onCactus()" class="type-icon">
+  </mat-grid-tile>
+</mat-grid-list>
+
+<h5  style="text-align: -webkit-right;">
+  <button (click)="onAddNewPlant()" class="new-plant-button">
+    <mat-icon  style="vertical-align: top;">add_circle</mat-icon>
+    <span >Add new plant</span>
+  </button>
+</h5>
+
+<mat-table [dataSource]="this.plants" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef class="table-header" style="justify-content: unset;"> PLANTS </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="justify-content: unset;"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="moistureLimit">
+    <mat-header-cell *matHeaderCellDef class="table-header"> SOIL MOISTURE </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.moistureLimit}}% </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="photoLimit">
+    <mat-header-cell *matHeaderCellDef class="table-header"> SUNLIGHT PERIOD </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.photoLimit}}h </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell  *matHeaderCellDef class="table-header"></mat-header-cell>
+    <mat-cell *matCellDef="let element" >
+      <button mat-button class="action-button" (click)="onAction(element) " >Action</button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="viewDetails">
+    <mat-header-cell  *matHeaderCellDef class="table-header"></mat-header-cell>
+    <mat-cell *matCellDef="let element" >
+      <button mat-button class="viewMore-button" (click)="onViewDetails(element)" >View Details</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

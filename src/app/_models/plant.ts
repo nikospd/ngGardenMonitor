@@ -4,5 +4,5 @@ export class Plant {
   typeId: number;
   moistureLimit: number;
   photoLimit: number;
-  name: string;
+  name = '';
 }
