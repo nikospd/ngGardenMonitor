@@ -26,4 +26,18 @@ export class PlantService {
     plantId = JSON.parse(localStorage.getItem('plant')).plantId;
     return this.http.delete<any>(`${environment.apiUrl}/plant/` + plantId);
   }
+  turnOnLight() {
+    let plantId: string;
+    plantId = JSON.parse(localStorage.getItem('plant')).plantId;
+    return this.http.post<any>(`${environment.apiUrl}/action/lights`, {
+      plantId
+    });
+  }
+  turnOnPump() {
+    let plantId: string;
+    plantId = JSON.parse(localStorage.getItem('plant')).plantId;
+    return this.http.post<any>(`${environment.apiUrl}/action/pump`, {
+      plantId
+    });
+  }
 }

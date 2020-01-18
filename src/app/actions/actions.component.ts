@@ -20,8 +20,21 @@ export class ActionsComponent implements OnInit {
       this.router.navigate(['/home']);
   }
   onDelete() {
-
     this.plantService.delete().subscribe(
+      data => {
+        this.router.navigate(['/home']);
+      }
+    );
+  }
+  onLight() {
+    this.plantService.turnOnLight().subscribe(
+      data => {
+        this.router.navigate(['/home']);
+      }
+    );
+  }
+  onPump() {
+    this.plantService.turnOnPump().subscribe(
       data => {
         this.router.navigate(['/home']);
       }

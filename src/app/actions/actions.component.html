@@ -20,7 +20,7 @@
 <!-- action commands -->
   <div class="row">
     <div class="col water-btn">
-      <button class="action-button">
+      <button (click)="onPump()" class="action-button">
         <div>
           <span class="action-name">Water plant</span>
         </div>
@@ -30,7 +30,7 @@
       </button>
     </div>
     <div class="col light-btn">
-      <button class="action-button">
+      <button (click)="onLight()" class="action-button">
         <div>
           <span class="action-name">Turn on grow-lights</span>
         </div>
